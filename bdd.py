@@ -1,24 +1,24 @@
 #!D:\Programs\Windows\Python\Python310\python.exe
+import mysql.connector
+from unittest import result
+import string
+import concurrent.futures
+import json
 print("Access-Control-Allow-Origin: http://localhost\r")
 print("Content-Type: application/json\n\n")
-import json
-import concurrent.futures
-import string
-from unittest import result
-import mysql.connector
 
 db1 = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    password = "mysql10",
-    database = "tp_bddav1"
+    host="localhost",
+    user="root",
+    password="mysql10",
+    database="tp_bddav1"
 )
 
 db2 = mysql.connector.connect(
-    host = "localhost",
-    user = "Abderrahmen",
-    password = "mysql10",
-    database = "tp_bddav2"
+    host="localhost",
+    user="root",
+    password="mysql10",
+    database="tp_bddav2"
 )
 csr1 = db1.cursor()
 csr1.execute("SELECT * FROM enseignants")
@@ -47,4 +47,4 @@ for x in res2:
     dic2.append(sub)
 
 print(json.dumps(dic1+dic2))
-print( )
+print()

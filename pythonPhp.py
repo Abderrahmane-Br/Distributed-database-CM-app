@@ -7,17 +7,17 @@ from unittest import result
 import mysql.connector
 
 db1 = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    password = "mysql10",
-    database = "bdda"
+    host="localhost",
+    user="root",
+    password="mysql10",
+    database="bdda1"
 )
 
 db2 = mysql.connector.connect(
-    host = "localhost",
-    user = "Abderrahmen",
-    password = "mysql10",
-    database = "bdda"
+    host="localhost",
+    user="root",
+    password="mysql10",
+    database="bdda2"
 )
 csr1 = db1.cursor()
 csr1.execute("SELECT * FROM enseignants")
