@@ -1,0 +1,405 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="expires" content="Sun Jan 2014 00:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
+    <title>Project BDA</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/all.css" />
+</head>
+
+<body>
+    <div id="over"></div>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span class="title">BDA</span>
+                </li>
+                <li class="active" data-name="Etudiants">
+                    <span class="icon" data-name="Etudiants"><i class="fas fa-user-graduate"></i></span>
+                    <span class="title">Etudiants</span>
+                </li>
+                <li data-name=" Enseignants">
+                    <span class="icon" data-name=" Enseignants"><i class="fas fa-user-tie"></i></span>
+                    <span class="title">Enseignants</span>
+                </li>
+                <li data-name="Cours">
+                    <span class="icon" data-name="Cours"><i class="far fa-file-pdf"></i></span>
+                    <span class="title">Cours</span>
+                </li>
+                <li data-name="Enseignements">
+                    <span class="icon" data-name="Enseignements"><i class="fas fa-users"></i></span>
+                    <span class="title">Enseignements</span>
+                </li>
+                <li data-name="Inscription_Cours">
+                    <span class="icon" data-name="Inscription_Cours"><i class="fas fa-file-signature"></i></span>
+                    <span class="title">Inscription_Cours</span>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="mainContainer">
+                <div class="topbar">
+                    <div class="toggle">
+                        <i class="fas fa-indent"></i>
+                    </div>
+                    <div class="search"></div>
+                    <div class="user">
+                        <img src="../a16aaa97cc4a07b2bb6ab640e421ac5c.jpg " alt=" " />
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="card">
+                        <div class="infoEtudiant">
+                            <div class="numbers"></div>
+                            <div class="name">Etudiants</div>
+                        </div>
+                        <div class="icon"><i class="fas fa-user-graduate"></i></div>
+                    </div>
+                    <div class="card">
+                        <div class="infoEnseignant">
+                            <div class="numbers"></div>
+                            <div class="name">Enseignants</div>
+                        </div>
+                        <div class="icon"><i class="fas fa-user-tie"></i></div>
+                    </div>
+                    <div class="card">
+                        <div class="infoCour">
+                            <div class="numbers"></div>
+                            <div class="name">Cours</div>
+                        </div>
+                        <div class="icon"><i class="far fa-file-pdf"></i></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="toolBar">
+                        <div class="title">Etudiants</div>
+                        <div class="besoin">
+                            <div class="ajouterBes" data-besoin="Ajouter">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="modifierBes" data-besoin="Modifier">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="supprimerBes" data-besoin="Supprimer">
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                            <div class="prev" data-besoin="Prev">
+                                <i class="fas fa-angle-left"></i>
+                            </div>
+                            <div class="next" data-besoin="Next">
+                                <i class="fas fa-angle-right"></i>
+                            </div>
+                            <div class="dropDown" data-besoin="Select">
+                                <input type="text" name="" class="textBox" placeholder="" readonly />
+                                <div class="option"></div>
+                            </div>
+                            <div class="search" data-besoin="Search">
+                                <div class="icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <input type="text" class="input-search" name="searchData" placeholder="...Search"
+                                    autocomplete="off" />
+                                <div class="search-icon">
+                                    <button class="rechercheElement">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="cancel-icon">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tables">
+                        <table class="active etudiant" data-table="etudiants" title="Etudiant">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>ID_Etudiant</td>
+                                    <td>Nom</td>
+                                    <td>Prenom</td>
+                                    <td>Adresses</td>
+                                    <td>Email</td>
+                                    <td>Specialite</td>
+                                    <td>N_Tel</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="content"></tbody>
+                        </table>
+                        <table class="enseignant" data-table="enseignants" title="Enseignant">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>ID_Enseignant</td>
+                                    <td>Nom</td>
+                                    <td>Prenom</td>
+                                    <td>Adresses</td>
+                                    <td>Email</td>
+                                    <td>N_Tel</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="content"></tbody>
+                        </table>
+                        <table class="Cours" data-table="cours" title="Cours">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>ID_Cours</td>
+                                    <td>Nom</td>
+                                    <td>Coeffecient</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="content"></tbody>
+                        </table>
+                        <table class="enseignements" data-table="enseignements" title="Cours">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>ID_Enseignant</td>
+                                    <td>Nom</td>
+                                    <td>Prenom</td>
+                                    <td>Cours</td>
+                                    <td>Type</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="content"></tbody>
+                        </table>
+                        <table class="inscription_cours" data-table="inscription_cours" title="Enscription_cours">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>ID_Etudiant</td>
+                                    <td>Nom</td>
+                                    <td>Prenom</td>
+                                    <td>Cours</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="content"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ajouter Etudiant">
+        <span class="btnClose">x</span>
+        <div class="main-heading">
+            <h2>Ajouter <span>Etudiant</span></h2>
+        </div>
+        <form action=" " id="formData" autocapitalize="oui" autocomplete="off">
+            <div class="left">
+                <input type="text" name="tableName" id="" value="etudiants" style="display: none" />
+                <input type="text" name="ID_Etudiant" id="" placeholder="ID_Etudiant" />
+                <input type="text" name="Nom" id="" placeholder="Nom" required />
+                <input type="text" name="Prenom" id="" placeholder="Prenom" required />
+                <input type="tel" name="N_Tel" id="" placeholder="N_Telephone" required />
+                <input type="email" name="Email" id="" placeholder=" Email" required />
+                <input type="text" name="Specialite" id="" placeholder=" Specialite" required />
+            </div>
+            <div class="right">
+                <textarea name="Adresse" id="" placeholder="Adresse"></textarea>
+                <div class="btn_submit">
+                    <button class="ajouterElement">Ajouter</button>
+                    <button type="reset">Supprimer</button>
+                </div>
+            </div>
+        </form>
+    </div>؛؛
+    <div class="modifier Etudiant">
+        <span class="btnClose">x</span>
+        <div class="main-heading">
+            <h2>Modifier <span>Etudiant</span></h2>
+        </div>
+        <form action=" " id="formData" method="POST" autocomplete="off">
+            <div class="left">
+                <input type="text" name="ID_Etudiant" style="display: none" />
+                <input type="text" name="Nom" id="" placeholder="Nom" required />
+                <input type="text" name="Prenom" id="" placeholder="Prenom" required />
+                <input type="tel" name="N_Tel" id="" placeholder="N_Telephone" required />
+                <input type="email" name="Email" id="" placeholder=" Email" required />
+                <input type="text" name="Specialite" id="" placeholder=" Specialite" required />
+            </div>
+            <div class="right">
+                <textarea name="Adresse" id="" placeholder="Adresse"></textarea>
+                <div class="btn_submit">
+                    <button class="modifierElement">Modifier</button>
+                    <button type="reset">Supprimer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modifier Enseignant">
+        <span class="btnClose">x</span>
+        <div class="main-heading">
+            <h2>Modifier Enseignant</h2>
+        </div>
+        <form action=" " id="formData" method="POST" autocomplete="off">
+            <div class="left">
+                <input type="text" name="ID_Enseignant" style="display: none" />
+                <input type="text" name="Nom" id="" placeholder="Nom" required />
+                <input type="text" name="Prenom" id="" placeholder="Prenom" required />
+                <input type="tel" name="N_Tel" id="" placeholder="N_Telephone" required />
+                <input type="email" name="Email" id="" placeholder=" Email" required />
+            </div>
+            <div class="right">
+                <textarea name="Adresse" id="" placeholder="Adresse"></textarea>
+                <div class="btn_submit">
+                    <button class="modifierElement">Modifier</button>
+                    <button type="reset">Supprimer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modifier Cours">
+        <span class="btnClose">x</span>
+        <div class="main-heading">
+            <h2>Modifier Cours</h2>
+        </div>
+        <form action="" id="formData" method="POST" autocomplete="off">
+            <div class="left">
+                <input type="text" name="ID_Cours" style="display: none" />
+                <input type="text" name="Nom" id="" placeholder="Nom" required />
+                <input type="text" name="Coeffecient" placeholder="Coeffecient" required />
+            </div>
+            <div class="right">
+                <div class="btn_submit">
+                    <button class="modifierElement">Modifier</button>
+                    <button type="reset">Supprimer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="ajouter Enseignant">
+        <span class="btnClose">x</span>
+        <div class="main-heading">
+            <h2>Ajouter Enseignant</h2>
+        </div>
+        <form action=" " id="formData" method="POST" autocomplete="off">
+            <div class="left">
+                <input type="text" name="tableName" id="" value="enseignants" style="display: none" />
+                <input type="text" name="ID_Enseignant" id="" placeholder="ID_Enseignant" />
+                <input type="text" name="Nom" id="" placeholder="Nom" required />
+                <input type="text" name="Prenom" id="" placeholder="Prenom" required />
+                <input type="tel" name="N_Tel" id="" placeholder="N_Telephone" required />
+                <input type="email" name="Email" id="" placeholder=" Email" required />
+            </div>
+            <div class="right">
+                <textarea name="Adresse" id="" placeholder="Adresse"></textarea>
+                <div class="btn_submit">
+                    <button class="ajouterElement">Ajouter</button>
+                    <button type="reset">Supprimer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="ajouter Cours">
+        <span class="btnClose">x</span>
+        <div class="main-heading">
+            <h2>Ajouter Cours</h2>
+        </div>
+        <form action=" " id="formData" method="POST" autocomplete="off">
+            <div class="left">
+                <input type="text" name="tableName" id="" value="cours" style="display: none" />
+                <input type="text" name="ID_Cours" id="" placeholder="ID_Cours" />
+                <input type="text" name="Nom" id="" placeholder="Nom" required />
+                <input type="text" name="Coeffecient" placeholder="Coeffecient" required />
+            </div>
+            <div class="right">
+                <div class="btn_submit">
+                    <button class="ajouterElement">Ajouter</button>
+                    <button type="reset">Supprimer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="ajouter enseignements">
+        <span class="btnClose">x</span>
+        <div class="main-heading">
+            <h2>Ajouter Enseignement</h2>
+        </div>
+        <form action=" " id="formData" method="POST" autocomplete="off">
+            <div class="left">
+                <input type="text" name="tableName" id="" value="enseignements" style="display: none" />
+                <input type="text" name="ID_Enseignant" id="" placeholder="ID_Enseignant" />
+                <input type="text" name="ID_Cours" id="" placeholder="ID_Cours" required />
+                <!-- <input type="text" name="Type_Cours" placeholder="Coeffecient" style="display: none;" required /> -->
+
+            </div>
+            <div class="right">
+                <div class="type_inscription">
+                    <div>
+                        <input id="coursEns" type="checkbox" name="type[]" value="CM" checked readonly>
+                        <label for="coursEns">Cours</label>
+                    </div>
+                    <div>
+                        <input id="tpEns" type="checkbox" name="type[]" value="TP">
+                        <label for="tpEns">TP</label>
+                    </div>
+                    <div>
+                        <input id="tdEns" type="checkbox" name="type[]" value="TD">
+                        <label for="tdEns">TD</label>
+                    </div>
+                </div>
+                <div class="btn_submit">
+                    <button class="ajouterElement">Ajouter</button>
+                    <button type="reset">Supprimer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="ajouter inscription_cours">
+        <span class="btnClose">x</span>
+        <div class="main-heading">
+            <h2>Inscription Cours</h2>
+        </div>
+        <form action=" " id="formData" method="POST" autocomplete="off">
+            <div class="left">
+                <input type="text" name="tableName" id="" value="inscription_cours" style="display: none" />
+                <input type="text" name="ID_Etudiant" id="" placeholder="ID_Etudiant" />
+                <input type="text" name="ID_Cours" id="" placeholder="ID_Cours" required />
+                <!-- <input type="text" name="Type_Cours" placeholder="Coeffecient" style="display: none;" required /> -->
+            </div>
+            <div class="right">
+                <!-- <div class="type_inscription">
+                    <div>
+                        <input id="coursEtud" type="checkbox" name="type[]" value="Cours" checked>
+                        <label for="coursEtud">Cours</label>
+                    </div>
+                    <div>
+                        <input id="tpEtud" type="checkbox" name="type[]" value="TP">
+                        <label for="tpEtud">TP</label>
+                    </div>
+                    <div>
+                        <input id="tdEtud" type="checkbox" name="type[]" value="TD">
+                        <label for="tdEtud">TD</label>
+                    </div>
+                </div> -->
+                <div class="btn_submit">
+                    <button class="ajouterElement">Ajouter</button>
+                    <button type="reset">Supprimer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="supprimerElement">
+        <div class="intro">Veuillez-vous vraiment supprimer cet element?</div>
+        <div class="choice"><span>Oui</span> <span>Non</span></div>
+    </div>
+
+    <script src="../js/ajax.js"></script>
+    <!-- <script src="../main.js"></script> -->
+</body>
+
+</html>
