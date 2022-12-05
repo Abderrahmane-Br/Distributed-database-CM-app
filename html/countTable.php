@@ -1,20 +1,20 @@
 <?php
 include 'connecterDB.php';
 include 'connecterDBMoh.php';
-    if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                // select etudiants
-                $stmt = $conn->prepare("SELECT * FROM etudiants ");
-                $stmt->execute();
-                $countEtud = $stmt->rowCount(); 
-                // select ense
-                $stmt = $conn->prepare("SELECT * FROM enseignants ");
-                $stmt->execute();
-                $countEns = $stmt->rowCount();
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-                $command = escapeshellcmd('..\pythonBackend\read\\countTable.py');
-                $output = shell_exec($command);
+    $stmt = $conn->prepare("SELECT * FROM etudiants ");
+    $stmt->execute();
+    $countEtud = $stmt->rowCount();
 
-                $data=["CountEtudian"=>$countEtud,"CountEnseignant"=>$countEns,"CountCour"=>$output];
+    $stmt = $conn->prepare("SELECT * FROM enseignants ");
+    $stmt->execute();
+    $countEns = $stmt->rowCount();
 
-                echo json_encode($data);
-    }
+    $command = escapeshellcmd('..\pythonBackend\read\\countTable.py');
+    $output = shell_exec($command);
+
+    $data = ["CountEtudian" => $countEtud, "CountEnseignant" => $countEns, "CountCour" => $output];
+
+    echo json_encode($data);
+}

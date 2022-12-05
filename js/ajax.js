@@ -1,9 +1,9 @@
 updateContentTable();
-// add active class in selected list Item
+
 let navList = document.querySelectorAll(".navigation ul li:not(:nth-child(1))");
 let tables = document.querySelectorAll(".tables table");
 
-//select tr listener
+
 tables.forEach(t => {
     addEventListener('click', (e) => {
         let target = e.target.parentNode;
@@ -24,13 +24,13 @@ navList.forEach((item, index) => {
         toolBarTitle.textContent = e.target.dataset.name;
         document.querySelector(".tables table.active").classList.remove("active");
         tables[index].classList.add("active");
-        // clear local storag
+
         localStorage.removeItem("item_active");
-        //Set navItem On Locale Storag
+
         localStorage.setItem("item_active", e.target.dataset.name);
         e.target.classList.add("active");
         document.querySelector(".textBox").value = "";
-        // update content table
+
         updateContentTable();
         if (tables[index].classList.contains("enseignements") || tables[index].classList.contains("inscription_cours"))
             document.querySelector('.modifierBes').style = "display: none;";
@@ -39,7 +39,7 @@ navList.forEach((item, index) => {
     });
 });
 
-//#add event click btnToggle
+
 let btnToggleNav = document.querySelector(".topbar .toggle");
 btnToggleNav.addEventListener("click", () => {
     document.querySelector(".navigation").classList.toggle("active");
@@ -49,7 +49,7 @@ btnToggleNav.addEventListener("click", () => {
 
 
 
-// add event click in btn supprimer
+
 let btnSupprimerBes = document.querySelector(".supprimerBes");
 btnSupprimerBes.addEventListener("click", () => {
     let trSeleced = document.querySelector("table.active tbody tr.selectedRow ");
@@ -61,12 +61,12 @@ btnSupprimerBes.addEventListener("click", () => {
         ).textContent;
         let idValue = trSeleced.children[1].textContent;
 
-       
+
         deleteElement(idValue, tableName, idName);
     }
 });
 
-// add event click in btn modifier
+
 let btnModifierBes = document.querySelector(".modifierBes");
 btnModifierBes.addEventListener("click", () => {
     let trSeleced = document.querySelector("table.active tbody tr.selectedRow ");
@@ -80,7 +80,7 @@ btnModifierBes.addEventListener("click", () => {
     }
 });
 
-// add event click of btn next / prev
+
 let next = document.querySelector(".next");
 let prev = document.querySelector(".prev");
 let i = 0;
@@ -109,7 +109,7 @@ prev.addEventListener("click", (e) => {
     }
 });
 
-// check item active in
+
 let itemActive = localStorage.getItem("item_active");
 if (itemActive !== null) {
     navList.forEach((item, index) => {
@@ -125,7 +125,7 @@ if (itemActive !== null) {
     });
 }
 
-// check recherch is  active
+
 let recherchActive = localStorage["recherchActive"];
 if (recherchActive != null) {
     document.querySelector(".besoin .dropDown").style.display = "block";
@@ -134,11 +134,11 @@ if (recherchActive != null) {
     document.querySelector(".cancel-icon").classList.add("active");
 }
 
-// add event click in btn ajouter
+
 let btnAjouter = document.querySelector(".besoin .ajouterBes ");
 let overlay = document.querySelector("#over")
 btnAjouter.addEventListener("click", () => {
-    // dataJson();
+
     overlay.classList.add('overlay')
     setTimeout(() => {
         if (navList[0].classList.contains("active")) {
@@ -159,33 +159,33 @@ btnAjouter.addEventListener("click", () => {
     }, 00)
 });
 
-// add event click in btnClose
+
 let btnClose = document.querySelectorAll(".btnClose");
 btnClose.forEach((btn) => {
     btn.addEventListener("click", function (e) {
-        // e.currentTarget.parentElement.classList.remove("active");
+
         e.currentTarget.parentElement.classList.remove("active");
         overlay.classList.remove("overlay");
     });
 });
 
-// add event click ajouterElement
+
 let btnajouterElement = document.querySelectorAll(".ajouterElement");
 btnajouterElement.forEach((ajouter) => {
     ajouter.onclick = insertMemberInfo;
 });
 
-// add event click in btn modifierElement
+
 let btnmodifierElement = document.querySelectorAll(".modifierElement");
 btnmodifierElement.forEach((modifier) => {
     modifier.onclick = modifierElements;
 });
 
-// select btn rechercher element
+
 let btnRechercherElement = document.querySelector(".rechercheElement");
 btnRechercherElement.onclick = rechercheElement;
 
-// dropDown select
+
 let dropDown = document.querySelector(".besoin .dropDown");
 dropDown.onclick = function () {
     chargerOption();
@@ -193,7 +193,7 @@ dropDown.onclick = function () {
     this.classList.toggle("active");
 };
 
-// search
+
 let search_box = document.querySelector(".besoin .search");
 let search_icon = document.querySelector(".search .icon ");
 let cancel_icon = document.querySelector(".cancel-icon");
@@ -228,13 +228,13 @@ searchInput.onkeyup = function (e) {
 
 
 };
-// function charger option element
+
 function chargerOption() {
     let thead = Array.from(document.querySelectorAll("table.active thead td"));
     let opName = thead.map((e) => e.textContent).filter((el) => el != "");
     let divOption = document.querySelector(".besoin .dropDown .option");
     divOption.innerHTML = "";
-    // document.querySelector(".textBox").value = "";
+
     opName.forEach((item) => {
         if (item != "Type") {
             let divItem = document.createElement("div");
@@ -251,7 +251,7 @@ function chargerOption() {
     });
 }
 
-// delete Element
+
 function deleteElement(idValue, tableName, idName) {
     let suppBox = document.querySelector(".supprimerElement");
     let btnSuppOui = document.querySelector(".supprimerElement .choice .oui");
@@ -280,7 +280,7 @@ function deleteElement(idValue, tableName, idName) {
     });
 }
 
-// function delete
+
 function deleteEns(idValueEns, idValueCour, tableName, idNameEns, idNameCour, typeEnseignement) {
     console.log(idNameEns);
     console.log({ idNameEns: idValueEns, idNameCour: idValueCour, tableName });
@@ -311,7 +311,7 @@ function deleteEns(idValueEns, idValueCour, tableName, idNameEns, idNameCour, ty
     });
 }
 
-// update Table Contelont
+
 function updateContentTable() {
     setTimeout(function () {
         let tableSeleced = document.querySelector("table.active").dataset.table;
@@ -328,18 +328,18 @@ function updateContentTable() {
     }, 0);
 }
 
-// insert Member  Information
+
 function insertMemberInfo() {
     setTimeout(() => {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                // console.log(JSON.parse(this.responseText));
+
                 updateContentTable();
             }
         };
         xhr.open("POST", "insert.php", true);
-        // xhr.setRequestHeader("Content-type", "application/x-www-form-urlenooded");
+
         let formData = document.querySelector(".ajouter.active #formData");
         let data = new FormData(formData);
         xhr.send(data);
@@ -350,7 +350,7 @@ function insertMemberInfo() {
     return false;
 }
 
-// check modifier Element
+
 function modifier(idValue, tableName, idName) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
@@ -386,7 +386,7 @@ function modifier(idValue, tableName, idName) {
         }
     }, 00);
 }
-// chargrer info element modifier
+
 function chrgreInfoModifier(js, boxName) {
     if (boxName == "cours") {
         document.querySelector('.modifier.Cours input[name="ID_Cours"]').value =
@@ -431,11 +431,11 @@ function chrgreInfoModifier(js, boxName) {
             js["Adresse"];
     }
 }
-// modifiee element
+
 function modifierElements() {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "modifierElement.php", true);
-    // xhr.setRequestHeader("Content-type", "application/x-www-form-urlenooded");
+
     let formData = document.querySelector(".modifier.active #formData");
     let data = new FormData(formData);
     xhr.send(data);
@@ -451,9 +451,9 @@ function modifierElements() {
     return false;
 }
 
-// rechercher Element
+
 function rechercheElement() {
-    // select info recherch
+
     let searchElement = document.querySelector(".textBox").value;
     let searchTable = document.querySelector("table.active").dataset.table;
     let searchValue = document.querySelector(".search .input-search").value;
@@ -476,14 +476,14 @@ function rechercheElement() {
     return false;
 }
 
-// function countRow Tables
+
 function countRowTables() {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            // console.log(this.responseText);
+
             let jsonData = JSON.parse(this.responseText);
-            // set Count Element
+
             document.querySelector(".info .infoEtudiant .numbers").textContent =
                 jsonData["CountEtudian"];
             document.querySelector(".info .infoEnseignant .numbers").textContent =
@@ -496,114 +496,113 @@ function countRowTables() {
     xhr.send();
 }
 
-// // function Box (ajouter/modifier) element
-// function createForm(dataInput, NameTable) {
-//     let dataName = dataInput.filter((e) => typeof(e) == "string")
-//     let parentElement = document.createElement('div');
-//     let parentName = NameTable;
-//     console.log(parentName);
-//     parentElement.className = 'ajouter';
-//     parentElement.classList.add(parentName);
 
 
-//     // create btn close
-//     let spanClose = document.createElement('span');
-//     spanClose.className = 'btnClose';
-//     spanClose.innerHTML = 'x'
-//     parentElement.appendChild(spanClose)
-
-//     // create main heading
-//     let mainHeading = document.querySelector('div');
-//     mainHeading.className = 'main-heading';
-//     mainHeading.innerHTML = `<h2>Ajouter <span>${parentName}</span></h2>`
-//     parentElement.appendChild(mainHeading)
-
-//     // create form
-//     let mainForm = document.createElement('form');
-//     mainForm.id = 'formData';
-//     mainForm.autocomplete = 'off'
 
 
-//     // create left and right div Element
-//     let left = document.createElement('div');
-//     left.classList.add('left');
-//     let right = document.createElement('div');
-//     right.classList.add('right');
 
-//     // fill input element to left and right element
-//     let tableName = document.querySelector('table.active').dataset.table;
-//     let inputTableName = document.createElement('input');
-//     inputTableName.setAttribute("type", 'text');
-//     inputTableName.setAttribute('name', 'tableName');
-//     inputTableName.setAttribute('value', tableName);
-//     left.appendChild(inputTableName);
-//     inputTableName.style.display = 'none'
 
-//     dataName.forEach((data) => {
-//         let inputFeild
-//         if (data == 'Adresse') {
-//             inputFeild = document.createElement('textarea');
-//         } else {
-//             inputFeild = document.createElement('input')
-//         }
 
-//         if (data == 'Email') {
-//             inputFeild.setAttribute('type', 'email')
-//         } else if (data == 'N_Tel') {
-//             inputFeild.setAttribute('type', 'tel')
-//         } else {
-//             inputFeild.setAttribute('type', 'text')
-//         }
-//         inputFeild.setAttribute('name', data)
-//         inputFeild.setAttribute('placeholder', data)
-//         if (data != 'Adresse') {
-//             left.appendChild(inputFeild)
-//         } else {
-//             right.appendChild(inputFeild)
-//         }
-//         inputFeild.required;
-//     })
 
-//     // create btn rest and valider
-//     let btnSub = document.createElement('div')
-//     btnSub.className = 'btn_submit';
-//     let btnvalider = document.createElement('button');
-//     btnvalider.className = 'ajouterElement';
-//     btnvalider.textContent = 'Ajouter';
-//     let btnrest = document.createElement('button');
-//     btnrest.setAttribute('type', 'rest');
-//     btnrest.textContent = 'Supprimer'
-//     btnSub.appendChild(btnvalider)
-//     btnSub.appendChild(btnrest)
-//     right.appendChild(btnSub)
 
-//     // append left and right element in mainFrom element
-//     mainForm.appendChild(left);
-//     mainForm.appendChild(right);
 
-//     // append main form in parent Element
-//     parentElement.appendChild(mainForm);
 
-//     // append parentElement to main body
-//     document.body.appendChild(parentElement)
-// }
 
-// // get feilds
-// let dataJson = () => {
-//     let tableSelected = (document.querySelector('.navigation li.active .icon ').dataset.name).toLowerCase();
 
-//     let xhr = new XMLHttpRequest();
-//     xhr.open('GET', `selectAttr.php?tableSelected=${tableSelected}`, true)
-//     xhr.send();
-//     xhr.onreadystatechange = function() {
-//         if (this.status = 200 && this.readyState == 4) {
-//             var js = JSON.parse(this.responseText);
-//             let tableName = document.querySelector('table.active').getAttribute('title');
-//             setTimeout(() => {
-//                 createForm(js, tableName)
-//             }, 100)
 
-//         }
 
-//     }
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
